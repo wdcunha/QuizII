@@ -1,0 +1,39 @@
+<main class="container w-50">
+
+  <h2>Sign Up</h2>
+
+  <%= form_for @user do |f| %>
+    <% if @user.errors.present? %>
+    <p>
+      <%= @user.errors.full_messages.join(', ') %>
+    </p>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :first_name, class:  'col-sm-3 control-label'%>
+      <%= f.text_field :first_name, class:  'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name, class:  'col-sm-3 control-label'%>
+      <%= f.text_field :last_name, class:  'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, class:  'col-sm-3 control-label'%>
+      <%= f.email_field :email, class:  'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class:  'col-sm-3 control-label'%>
+      <%= f.password_field :password, class:  'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'col-sm-4 control-label'%>
+      <%= f.password_field :password_confirmation, class: 'form-control'%>
+    </div>
+    <%= f.submit class: 'btn btn-primary'%>
+  <% end %>
+
+</main>

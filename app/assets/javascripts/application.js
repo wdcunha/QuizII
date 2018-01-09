@@ -10,5 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require popper
+//= require bootstrap
 //= require rails-ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.toggle-description').on('click', function(e) {
+    $(this).find('.close-icon').slideToggle();
+    $(this).find('.open-icon').slideToggle();
+    $(this).closest('div').find('.idea-description').slideToggle();
+    e.preventDefault();
+  })
+});

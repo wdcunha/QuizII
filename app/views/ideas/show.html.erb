@@ -1,0 +1,68 @@
+<main class="container">
+
+
+  <h4><%= @idea.title %></h4>
+
+  <p><%= @idea.description %></p>
+
+
+  <p>By <strong><%= @idea.user&.full_name || "[deleted]" %></strong></p>
+
+  <p><strong>Created At:</strong> <%= time_ago_in_words(@idea.created_at) %> ago</p>
+  <p><strong>Update At:</strong> <%= time_ago_in_words(@idea.updated_at) %> ago</p>
+
+  <% if can?(:manage, @idea) %>
+
+    <%= link_to 'Edit', edit_idea_path(@idea) %>
+
+    <%=
+      link_to(
+        'Delete',
+        idea_path(@idea),
+        method: :delete,
+        data: {confirm: 'Are you sure?'}
+      )
+    %>
+  <% end %>
+
+
+  <h3>Reviews</h3>
+
+  <%= form_for [@idea, @review] do |f| %>
+    <% if @review.errors.present? %>
+      <p>
+        <%= @review.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+
+    <div>
+      <%= f.text_area :body %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+
+  <div class="review-list">
+      <% @reviews.each do |review| %>
+        <div class="review-list-item">
+          <p><%= review.body %></p>
+          <p><%= "By #{@idea.user&.full_name}" || "[deleted]" %></p>
+          <p>
+            <strong>Created At:</strong>
+            <%= time_ago_in_words(review.created_at) %> ago
+          </p>
+          <% if can?(:manage, @idea) %>
+            <%= link_to(
+              'Delete',
+              idea_review_path(@idea, review),
+              data: {confirm: 'Are you sure?'},
+              method: :delete
+            ) %>
+          <% end %>
+
+        </div>
+      <% end %>
+  </div>
+
+
+</main>

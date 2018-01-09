@@ -1,0 +1,20 @@
+<main class="container">
+
+    <div class="row w-100">
+
+      <% @ideas.each do |idea| %>
+        <hr class="line">
+        <div class="col-md-12">
+          <small>
+            <a class="toggle-description">
+              <i class="fa fa-plus open-icon" class="plus"> </i>
+              <i class="fa fa-minus close-icon" class="plus" style="display:none;" > </i>
+            </a>
+          </small>
+          <h4 class="idea-title"><%= link_to idea.title, idea_path(idea) %></h4>
+          <p class="idea-description" style="display:none;"><%= idea.description %></p>
+        </div>
+      <% end %>
+    </div>
+
+</main>
