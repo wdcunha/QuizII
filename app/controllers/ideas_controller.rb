@@ -19,7 +19,7 @@ class IdeasController < ApplicationController
 
     if @idea.save
       flash[:success] = 'Idea created!'
-      redirect_to idea_path(@idea)
+      redirect_to ideas_path
     else
       render :new
     end

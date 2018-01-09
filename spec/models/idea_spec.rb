@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Idea, type: :model do
 
+  let(:user) { FactoryBot.create(:user) }
+
   describe 'validations' do
 
     it 'requires a title' do
@@ -20,6 +22,7 @@ RSpec.describe Idea, type: :model do
       #        title
       i = Idea.create!({ title: 'Something to Test',
                              description: 'Here some text',
+                             user: user
                             })
       i1 = Idea.new({ title: 'Something to Test' })
 

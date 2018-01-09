@@ -1,20 +1,24 @@
-<main class="container">
 
-    <div class="row w-100">
 
-      <% @ideas.each do |idea| %>
-        <hr class="line">
-        <div class="col-md-12">
-          <small>
-            <a class="toggle-description">
-              <i class="fa fa-plus open-icon" class="plus"> </i>
-              <i class="fa fa-minus close-icon" class="plus" style="display:none;" > </i>
-            </a>
-          </small>
-          <h4 class="idea-title"><%= link_to idea.title, idea_path(idea) %></h4>
-          <p class="idea-description" style="display:none;"><%= idea.description %></p>
-        </div>
-      <% end %>
+
+<div class="container">
+  <% @ideas.each do |idea|  %>
+    <div>
+      <hr class="line">
+      <small>
+      <a class="toggle-description">
+        <i class="fa fa-plus open-icon" class="plus"> </i>
+        <i class="fa fa-minus close-icon" class="plus" style="display:none;" > </i>
+      </a>
+      </small>
+
+      <span class="idea-title"><%= idea.title %></span>
+      <div class="idea-description" style="display:none">
+        <p><%=  idea.description %></p>
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span> <%= link_to  idea.user&.full_name, idea_path(idea) || "[deleted]" , class: "user_link" %>&nbsp&nbsp&nbsp</span>
+
+      </div>
     </div>
-
-</main>
+  <% end %>
+</div>
