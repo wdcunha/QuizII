@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ nav {
+   float: right;
+ }
+
+.image-margin {
+  margin: 5px;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+}
+
+
+
+ @import 'bootstrap';
+
+ @import 'font-awesome';
